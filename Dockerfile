@@ -3,8 +3,8 @@ FROM ubuntu:16.04
 MAINTAINER Name <brice.aminou@gmail.com>
 
 RUN apt-get update && apt-get install -y git && apt-get install -y wget
-#RUN apt-get install -y python3-pip
-#RUN pip3 install overture_song
+
+RUN apt-get install -y python-pip
 
 RUN apt-get update && apt-get install -y software-properties-common && apt-get install -y python-software-properties
 RUN \
@@ -20,6 +20,11 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 RUN mkdir /icgc-storage-client
 RUN wget -O icgc-storage-client.tar.gz https://dcc.icgc.org/api/v1/ui/software/icgc-storage-client/latest
 RUN tar -zxvf icgc-storage-client.tar.gz -C /icgc-storage-client --strip-components=1
+
+RUN git clone https://github.com/icgc-dcc/icgconnect.git /icgconnect
+RUN cd icgconnect
+RUN pip install /icgconnect
+RUN pip install jsonschema
 
 #RUN touch /icgc-storage-client/conf/application-aws.properties
 RUN echo "accessToken=\$ACCESSTOKEN" > /icgc-storage-client/conf/application-aws.properties
