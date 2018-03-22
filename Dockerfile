@@ -32,6 +32,11 @@ RUN echo "storage.url=\${STORAGEURL}" >> /icgc-storage-client/conf/application-a
 RUN echo "metadata.url=\${METADATAURL}" >> /icgc-storage-client/conf/application-aws.properties
 RUN echo "logging.file=./storage-client.log" >> /icgc-storage-client/conf/application-aws.properties
 
+RUN echo "accessToken=\$ACCESSTOKEN" > /icgc-storage-client/conf/application.properties
+RUN echo "storage.url=\${STORAGEURL}" >> /icgc-storage-client/conf/application.properties
+RUN echo "metadata.url=\${METADATAURL}" >> /icgc-storage-client/conf/application.properties
+RUN echo "logging.file=./storage-client.log" >> /icgc-storage-client/conf/application.properties
+
 RUN mkdir /scripts
 COPY tools/download_icgc_file.py /scripts/download
 
