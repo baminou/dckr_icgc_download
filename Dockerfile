@@ -18,7 +18,7 @@ RUN \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 RUN mkdir /icgc-storage-client
-RUN wget -O icgc-storage-client.tar.gz https://dcc.icgc.org/api/v1/ui/software/icgc-storage-client/latest
+RUN wget -O icgc-storage-client.tar.gz https://artifacts.oicr.on.ca/artifactory/dcc-release/org/icgc/dcc/icgc-storage-client/1.0.23/icgc-storage-client-1.0.23-dist.tar.gz
 RUN tar -zxvf icgc-storage-client.tar.gz -C /icgc-storage-client --strip-components=1
 
 RUN git clone https://github.com/icgc-dcc/icgconnect.git /icgconnect
