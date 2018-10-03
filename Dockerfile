@@ -4,6 +4,8 @@ MAINTAINER Name <brice.aminou@gmail.com>
 
 RUN apt-get update && apt-get install -y git && apt-get install -y wget
 
+RUN apt-get update --fix-missing
+
 RUN apt-get install -y python-pip
 
 RUN apt-get update && apt-get install -y software-properties-common && apt-get install -y python-software-properties
@@ -45,4 +47,4 @@ RUN chmod +x /scripts/download
 ENV PATH="/scripts/:${PATH}"
 ENV PATH="/icgc-storage-client/bin:${PATH}"
 
-ENTRYPOINT ["download"]
+#ENTRYPOINT ["download"]

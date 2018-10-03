@@ -12,6 +12,7 @@ def main():
     parser.add_argument('-id', '--object-id', dest='object_id', help="Object ID on Collaboratory", required=True)
     parser.add_argument('-o', '--output', dest='out_dir', help="Output directory", required=True)
     parser.add_argument('--skip-validation', dest='skip_validation', help="Skip validation", action='store_true')
+    parser.add_argument('--force', dest='force', help="Force download overwritte the file if exists", action='store_true')
 
     results = parser.parse_args()
 
@@ -23,7 +24,7 @@ def main():
             print "Error: icgc-storage-client in not installed in the path"
             exit(1)
 
-    collab.download(results.object_id, 'icgc-storage-client',results.out_dir, results.skip_validation)
+    collab.download(results.object_id, 'icgc-storage-client',results.out_dir, results.force, results.skip_validation)
 
 if __name__ == '__main__':
     main()
